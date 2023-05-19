@@ -23,15 +23,11 @@ export const cls = (...classnames: string[]) => {
   return classnames.join(' ');
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout( {children,} : { children: React.ReactNode } ) {
   return (
     <html lang="en">
-      <body className={ cls(notoSansKr.className, roboto.variable, "flex" ,"h-screen", "flex-col"  )}>
-        <Header/>
+      <body className={ cls(notoSansKr.className, roboto.variable, "flex" ,"h-screen", "flex-col" , "bg-white" , "text-neutral" )}>
+        {/* <Header/> */}
         {children}
         {/* <Footer/> */}
       </body>

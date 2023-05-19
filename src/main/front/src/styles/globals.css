@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -14,14 +14,108 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+} */
+
+.main-wrap {
+  margin  : 0 auto;
+}
+
+html {
+  width:100%; height:100%;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  width:100%; height:100%;
+  overflow : hidden;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+.layer {
+  top : 0;
+  width : 100%;
+  height : 100%;
+  position : fixed;
+  z-index : 99;
+}
+
+.content {
+  width : 100%;
+  height : 100%;
+  position : fixed;
+  top : 0;
+  left : 0;
+  overflow : hidden;
+}
+
+.main {
+  width : 100%;
+  height : 100%;
+  position : absolute;
+  top : 60px;
+  overflow: hidden;
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  min-height: 40px;
+}
+
+.row:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.footer {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.mAuto {
+  margin : 0 auto;
+}
+
+.join_list {
+  position: relative;
+}
+
+.join_list::after {
+  content: "";
+  position: absolute;
+  height: 15px;
+  bottom: 4px;
+  left: calc(100% + 5px);
+  border-right: 1px solid #36d399;
+}
+
+.sub-login-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+}
+
+.kakao-btn {
+  background-color: #fae500;
+}
+
+.goggle-btn {
+  background-color: #f8f8f8;
+}
+.github-btn {
+  background-color: #3c4043;
+}
+.apple-btn {
+  background-color: #fff;
 }
