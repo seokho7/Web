@@ -1,10 +1,12 @@
 'use client'
 import Image from 'next/image';
+import Link from 'next/link';
 
 import KakaoIcon from "../../public/icon/kakao-icon.svg";
 import GoogleIcon from "../../public/icon/goggle-icon.svg";
 import GitHubIcon from "../../public/icon/github-icon.svg";
 import AppleIcon from "../../public/icon/apple-icon.svg";
+
 import logoLocation from "../../public/seokho-web-logo.png"
 
 enum Site {
@@ -37,14 +39,18 @@ export default function Home() {
     } else { return null; }
   };
 
+  const test = () : void => {
+    console.log("test console")
+  }
+
   return (
     <main className="main">
       <div className="row h-full flex flex-col mt-44">
-        <Image src={logoLocation} width={200} height={200} alt='석호 웹 로고' className='mAuto'/>
-        <form action="" className="flex flex-col gap-3 mb-5">
+        <Image src={logoLocation} width={150} height={150} alt='석호 웹 로고' className='mAuto'/>
+        <form action="" className="flex flex-col gap-3 mb-5 mt-7">
           <input type="text" placeholder="아이디" className="input input-bordered input-info w-full  bg-white" />
           <input type="password" placeholder="비밀번호" className="input input-bordered input-info w-full  bg-white" />
-          <button className="btn btn-info text-white">로그인</button>
+          <button className="btn btn-info text-white" onClick={test}>로그인</button>
         </form>
         <ul className="flex justify-center">
           <li className="join_list mr-3">
@@ -54,7 +60,7 @@ export default function Home() {
             <a href="" className="hover:font-bold">비밀번호 찾기</a>  
           </li>
           <li>
-            <a href="" className="hover:font-bold">회원가입</a>  
+            <Link href="/pages/join">회원가입</Link>
           </li>
         </ul>
         <article className="flex justify-center gap-7 mt-7">
