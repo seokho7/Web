@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   webpack: (config) => {
-    // 아래를 추가합니다.
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
@@ -15,7 +14,15 @@ const nextConfig = {
     return [
       {
         source: "/:join",
-        destination: "http://localhost:8080/test", // 해당 서버 포트
+        destination: "http://localhost:8080/test", 
+      },
+      {
+        source: "/:members/new",
+        destination: "http://localhost:8080//members/new", 
+      },
+      {
+        source: "/:members/test",
+        destination: "http://localhost:8080//members/test", 
       },
     ];
   },

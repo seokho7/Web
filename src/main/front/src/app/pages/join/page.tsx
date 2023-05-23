@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image';
+
 import logoLocation from "../../../../public/seokho-web-logo.png"
 import useSignUpForm from '@/hooks/useSignUpForm';
 
@@ -9,10 +10,18 @@ export default function Home() {
   const {formData , handleInputChange} = useSignUpForm();
   const handleSubmit = (e : React.FormEvent) => {
     e.preventDefault();
+    console.log(formData)    
     // api 호출 코드 넣기
-    console.log(formData)
+    let signUrl = "/members/new";
+    fetch(signUrl,{
+      method : "POST",
+      headers : {
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify(formData)
+    }).then(res => console.log(res))
   }
-  
+
   return (
     <main className="main">
       <div className="row h-full flex flex-col mt-44">
@@ -70,7 +79,7 @@ export default function Home() {
                     if (e.target.value.length > e.target.maxLength)
                       e.target.value = e.target.value.slice(0, e.target.maxLength);
                   }}
-                  maxLength={10}
+                  maxLength={11}
                   />
             </li>
           </ul>

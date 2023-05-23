@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <main className="main">
-      <div className="row h-full flex flex-col mt-44">
+      <div className="row h-full flex flex-col mt-8">
         <Image src={logoLocation} width={150} height={150} alt='석호 웹 로고' className='mAuto'/>
         <form action="" className="flex flex-col gap-3 mb-5 mt-7">
           <input type="text" placeholder="아이디" className="input input-bordered input-info w-full  bg-white" />
@@ -66,6 +66,10 @@ export default function Home() {
         <article className="flex justify-center gap-7 mt-7">
             {siteList.map((item)=> SubLoginBtn(item) )}
         </article>
+        <p className='flex justify-center gap-1 mt-4 text-blue-700'>
+          <span>로고의 출처 =</span>
+          <a href="https://kr.freepik.com/free-vector/gradient-colored-s-logo-collection_13185617.htm#page=8&query=letter%20s%20design&position=0&from_view=search&track=ais">Freepik</a>
+        </p>
       </div>
     </main>
   )
