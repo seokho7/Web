@@ -13,7 +13,7 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/:join",
+        source: "/:join", // 나의 api 라우터 경로
         destination: "http://localhost:8080/test", 
       },
       {

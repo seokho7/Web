@@ -1,13 +1,13 @@
-'use client'
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
 
 import KakaoIcon from "../../public/icon/kakao-icon.svg";
 import GoogleIcon from "../../public/icon/goggle-icon.svg";
 import GitHubIcon from "../../public/icon/github-icon.svg";
 import AppleIcon from "../../public/icon/apple-icon.svg";
 
-import logoLocation from "../../public/seokho-web-logo.png"
+import logoLocation from "../../public/seokho-web-logo.png";
 
 enum Site {
   Kakao = "kakao-btn",
@@ -17,7 +17,6 @@ enum Site {
 }
 
 export default function Home() {
-
   const siteList: Site[] = [Site.Kakao, Site.Google, Site.GitHub, Site.Apple];
 
   const svgList: Record<Site, JSX.Element> = {
@@ -27,50 +26,87 @@ export default function Home() {
     [Site.Apple]: <AppleIcon />,
   };
 
-  const cls = (...classnames: string[]) => { return classnames.join(' '); }
+  const cls = (...classnames: string[]) => {
+    return classnames.join(" ");
+  };
 
   const SubLoginBtn = (site: Site): React.ReactNode => {
     if (siteList.includes(site)) {
       return (
-        <button key={site} className={cls(site, "sub-login-btn", "flex", "justify-center", "items-center", "kakao-btn", "shadow-md")}>
+        <button
+          key={site}
+          className={cls(
+            site,
+            "sub-login-btn",
+            "flex",
+            "justify-center",
+            "items-center",
+            "kakao-btn",
+            "shadow-md",
+          )}
+        >
           {svgList[site]}
         </button>
       );
-    } else { return null; }
+    } else {
+      return null;
+    }
   };
 
-  const test = () : void => {
-    console.log("test console")
-  }
+  const test = (): void => {
+    console.log("test console");
+  };
 
   return (
     <main className="main">
       <div className="row h-full flex flex-col mt-8">
-        <Image src={logoLocation} width={150} height={150} alt='석호 웹 로고' className='mAuto'/>
+        <Image
+          src={logoLocation}
+          width={120}
+          height={120}
+          alt="석호 웹 로고"
+          className="mAuto"
+        />
         <form action="" className="flex flex-col gap-3 mb-5 mt-7">
-          <input type="text" placeholder="아이디" className="input input-bordered input-info w-full  bg-white" />
-          <input type="password" placeholder="비밀번호" className="input input-bordered input-info w-full  bg-white" />
-          <button className="btn btn-info text-white" onClick={test}>로그인</button>
+          <input
+            type="text"
+            placeholder="아이디"
+            className="input input-bordered input-info w-full  bg-white"
+          />
+          <input
+            type="password"
+            placeholder="비밀번호"
+            className="input input-bordered input-info w-full  bg-white"
+          />
+          <button className="btn btn-info text-white" onClick={test}>
+            로그인
+          </button>
         </form>
         <ul className="flex justify-center">
           <li className="join_list mr-3">
-            <a href="" className="hover:font-bold">아이디 찾기</a>  
+            <a href="" className="hover:font-bold">
+              아이디 찾기
+            </a>
           </li>
           <li className="join_list mr-3">
-            <a href="" className="hover:font-bold">비밀번호 찾기</a>  
+            <a href="" className="hover:font-bold">
+              비밀번호 찾기
+            </a>
           </li>
           <li>
             <Link href="/pages/join">회원가입</Link>
           </li>
         </ul>
         <article className="flex justify-center gap-7 mt-7">
-            {siteList.map((item)=> SubLoginBtn(item) )}
+          {siteList.map((item) => SubLoginBtn(item))}
         </article>
-        <p className='flex justify-center gap-1 mt-4 text-blue-700'>
+        <p className="flex justify-center gap-1 mt-4 text-blue-700">
           <span>로고의 출처 =</span>
-          <a href="https://kr.freepik.com/free-vector/gradient-colored-s-logo-collection_13185617.htm#page=8&query=letter%20s%20design&position=0&from_view=search&track=ais">Freepik</a>
+          <a href="https://kr.freepik.com/free-vector/gradient-colored-s-logo-collection_13185617.htm#page=8&query=letter%20s%20design&position=0&from_view=search&track=ais">
+            Freepik
+          </a>
         </p>
       </div>
     </main>
-  )
+  );
 }

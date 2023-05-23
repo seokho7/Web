@@ -25,13 +25,14 @@ public class MemberController {
 //    }
 
     @PostMapping(value = "/members/new", consumes = "application/json")
-    public void createMember(@RequestBody String args){
+    public String createMember(@RequestBody String args){
         Gson gson = new Gson();
         MemberDto user = gson.fromJson(args, MemberDto.class);
 
-        System.out.println(user);
+        System.out.println("USER = " + user);
 
         String memberId = memberService.join(user);
+        return "성공";
     }
 
 }

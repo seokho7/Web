@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
@@ -16,11 +17,9 @@ import java.util.UUID;
 @NoArgsConstructor
 @Table(name = "MEMBER")
 public class Member {
-    String uuid = UUID.randomUUID().toString();
+//    String uuid = UUID.randomUUID().toString();
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
     // use
     private String MEMBER_ID;
 
@@ -40,15 +39,13 @@ public class Member {
     // use
     private String USER_PHONE;
 
-    @Column (name = "USER_STATE" , nullable = false  ,
-            insertable = false, updatable = false, columnDefinition = "boolean default true")
-    private boolean USER_STATE;
+    @Column (name = "USER_STATE" , nullable = false)
+    private Integer USER_STATE;
 
     @Column
-    private String CREATE_DTM;
+    private Timestamp CREATE_DTM;
 
-    @Column (name = "GRADE_ID", nullable = false
-            ,insertable = false, updatable = false, columnDefinition = "Integer default 1")
+    @Column (name = "GRADE_ID", nullable = false)
     private Integer GARDE_ID;
 
 }
