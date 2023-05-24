@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
 
 @Service    // 서비스를 명시
@@ -17,17 +18,20 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public String join(MemberDto memberDto){
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
         Member member = Member.builder()
-                .MEMBER_ID(UUID.randomUUID().toString())
-                .USER_EMAIL(memberDto.getUSER_EMAIL())
-                .USER_PW(memberDto.getUSER_PW())
-                .USER_NICKNAME(memberDto.getUSER_NICKNAME())
-                .USER_PHONE(memberDto.getUSER_PHONE())
-                .USER_STATE(1)
-                .CREATE_DTM(timestamp)
-                .GARDE_ID(1)
+                .memberId(UUID.randomUUID().toString())
+                .userEmail(memberDto.getUserEmail())
+                .userPw(memberDto.getUserPw())
+                .userNickname(memberDto.getUserNickname())
+                .userPhone(memberDto.getUserPhone())
+                .userState(1)
+                .createDtm(new Timestamp(System.currentTimeMillis()))
+                .gradeId(1)
                 .build();
-        return memberRepository.save(member).getMEMBER_ID();
+        System.out.println("JOIN BEFORE" + member);
+        return memberRepository.save(member).getMemberId();
     }
+
+
 }
