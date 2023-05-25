@@ -24,7 +24,12 @@ public class MemberController {
 
     @PostMapping(value = "/members/checkNickname")
     public boolean checkNickname(@RequestBody String userNickname){
-        return true;
+        return memberService.nickNameCheck(userNickname);
+    }
+
+    @PostMapping(value = "/members/checkUserEmail")
+    public boolean checkUserEmail(@RequestBody String userEmail){
+        return memberService.emailCheck(userEmail);
     }
 
     @PostMapping(value = "/members/new")
@@ -37,6 +42,5 @@ public class MemberController {
             return "실패";
         }
     }
-
 
 }

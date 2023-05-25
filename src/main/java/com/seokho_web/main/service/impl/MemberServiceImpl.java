@@ -19,6 +19,8 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public String join(MemberDto memberDto){
 
+//        System.out.println(memberRepository.findByNickname(memberDto.getUserNickname()));
+
         Member member = Member.builder()
                 .memberId(UUID.randomUUID().toString())
                 .userEmail(memberDto.getUserEmail())
@@ -29,9 +31,16 @@ public class MemberServiceImpl implements MemberService {
                 .createDtm(new Timestamp(System.currentTimeMillis()))
                 .gradeId(1)
                 .build();
-        System.out.println("JOIN BEFORE" + member);
         return memberRepository.save(member).getMemberId();
     }
 
+    @Override
+    public boolean nickNameCheck(String userNickname) {
+        return memberRepository.existsByUserNickname(userNickname);
+    }
 
+    @Override
+    public boolean emailCheck(String userEmail) {
+        return memberRepository.existsByUserEmail(userEmail);
+    }
 }
